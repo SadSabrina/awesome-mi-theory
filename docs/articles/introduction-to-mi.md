@@ -26,7 +26,7 @@ The overarching goal of Mechanistic Interpretability (MI) — much like traditio
 
 A possible formal definition could be:  
 
->> *MI refers to any research aimed at describing the internal structures and mechanisms of a model.* [[src](https://arxiv.org/pdf/2410.09087)]
+> *MI refers to any research aimed at describing the internal structures and mechanisms of a model.* [[src](https://arxiv.org/pdf/2410.09087)]
 
 In other words, MI always involves analyzing the internal representations and components, striving to understand how individual elements (neurons) and their interactions shape the overall behavior of the network.  
 
