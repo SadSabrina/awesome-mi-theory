@@ -26,7 +26,7 @@ The overarching goal of Mechanistic Interpretability (MI) — much like traditio
 
 A possible formal definition could be:  
 
-    *MI refers to any research aimed at describing the internal structures and mechanisms of a model.*
+>> *MI refers to any research aimed at describing the internal structures and mechanisms of a model.* [[src](https://arxiv.org/pdf/2410.09087)]
 
 In other words, MI always involves analyzing the internal representations and components, striving to understand how individual elements (neurons) and their interactions shape the overall behavior of the network.  
 
@@ -38,4 +38,4 @@ Another way to highlight this distinction is through the categorization of XAI m
 In practice, the boundaries are blurred: both strategies may eventually include the study of neurons and representations inside models. For example, one might identify a specific capability of a model (such as solving a given task) through probing, and then zoom in on the layers, modules, or groups of neurons responsible for it.  
  
 ![three_steps_MI](https://ucarecdn.com/688f59f7-3d81-4f5e-9643-6eee85c7153e/)
-One of the possible decompositions of MI into three steps, [source](https://www.alignmentforum.org/posts/64MizJXzyvrYpeKqm/sparsify-a-mechanistic-interpretability-research-agenda)
+*One of the possible decompositions of MI into three steps, [source](https://www.alignmentforum.org/posts/64MizJXzyvrYpeKqm/sparsify-a-mechanistic-interpretability-research-agenda)*
