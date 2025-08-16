@@ -7,7 +7,6 @@ nav:
   - Home: index.md
   - Articles:
       - Introduction to MI: articles/introduction-to-mi.md
-      - Information Bottleneck: articles/information-bottleneck.md
 
 theme:
   name: material
