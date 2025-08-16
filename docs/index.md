@@ -12,11 +12,9 @@ Hi! I'm Sabrina, a researcher writing short articles on Mechanistic interpretabi
 
 
 ## Contact
-
 - Email: sadsobr7@gmail.com
 - GitHub: https://github.com/SadSabrina
 
 ## Articles
 
 - [Introduction to MI](articles/introduction-to-mi.md)
-- [Information Bottleneck](articles/information-bottleneck.md)
