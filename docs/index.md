@@ -18,3 +18,4 @@ Hi! I'm Sabrina, a researcher writing short articles on Mechanistic interpretabi
 ## Articles
 
 - [Introduction to MI](articles/introduction-to-mi.md)
+- [Basic Definitions](articles/basic-definiions.md)

@@ -1,4 +1,4 @@
-# Introduction to Mechanistic interpretability
+# **Introduction to Mechanistic interpretability**
 
 ## **A Bit of History**
 
