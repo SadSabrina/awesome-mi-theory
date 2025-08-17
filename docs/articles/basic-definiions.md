@@ -76,4 +76,4 @@ If a **feature** explains *what* is encoded, a **circuit** explains *how* it is 
 
 ![circuits_vs_feature](https://ucarecdn.com/9989e635-1305-4c7e-9f44-26cea79ac947/)
 
-A *feature* can be viewed as an elementary unit of knowledge, while a *circuit* is a combination of such units, organized through the weights and layers of the network, that enables the transformation of information into a specific component.  
+A *feature* can be viewed as an elementary unit of knowledge, while a *circuit* is a combination of such units, organized through the weights and layers of the network, that enables the transformation of information into a specific component. 
