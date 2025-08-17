@@ -24,7 +24,7 @@ Depending on perspective:
 
 In research practice, MI more often uses the second approach (treating features as basis units of knowledge), while in applied settings the emphasis is typically placed on human-interpretable features.  
 
-### **Representation of Features**
+### **Examples of Features**
 
 There are several ways to describe how a feature can emerge in a network. The most common are:  
 
@@ -54,7 +54,7 @@ An important discovery from research mapping neurons $\to$ features is that:
 **Example of a polysemantic neuron:**  
 A neuron that activates both for bread (highlighting the edges of a loaf) and for bananas (highlighting the spots on the yellow peel).  
 
-# Circuits  
+## **Circuits**
 
 A **circuit** $C$ is a stable structure of connections inside a network $Net(X)$, representing a subgraph of the computational graph that describes the interaction of features $f_i$ and implements a specific computation.  
 
