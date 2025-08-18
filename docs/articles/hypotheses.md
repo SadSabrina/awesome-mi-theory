@@ -83,7 +83,7 @@ One example is modular arithmetic (e.g., working with dates), where features can
 
 *"[Not all LM features are linear.](https://arxiv.org/pdf/2405.14860)"*  
 
-## Hypothesis 3: Universality  
+## **Hypothesis 3: Universality**  
 
 **Formulation:**  
 
@@ -104,7 +104,7 @@ Researchers have called these recurring patterns **motifs**.
 - A simple example of a motif is **curve detectors** discovered in vision models.  
 - More complex motifs include **subnetworks (circuits)** specializing in particular tasks — for example, **induction heads** in transformers.  
 
-![univers](https://ucarecdn.com/38e7133d-45b5-4328-927a-ec11990f4b2b)
+![univers](https://ucarecdn.com/38e7133d-45b5-4328-927a-ec11990f4b2b/)
 [*Universality in CNNs*](https://distill.pub/2020/circuits/zoom-in/)
 
 
@@ -119,7 +119,7 @@ Testing the universality hypothesis has major implications:
   with the hope that these models stop changing every year. 
 
 
-## Hypothesis 4: Internal World Model  
+## **Hypothesis 4: Internal World Model**  
 
 **Formulation:**  
 
