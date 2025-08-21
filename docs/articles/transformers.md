@@ -48,7 +48,8 @@ Therefore, attention is constrained to past tokens only.
 </details>
 
 
-### How does this help with pronoun disambiguation?  
+<details>
+<summary>**How does this help with pronoun disambiguation?**</summary>
 
 - *“The cat chased the mouse because **it** was hungry.”*  
 - *“The cat chased the mouse because **it** was small.”*  
@@ -56,14 +57,14 @@ Therefore, attention is constrained to past tokens only.
 Here, the context determines the meaning of the pronoun **it**.  
 By attending **left-to-right**, the model uses the preceding tokens to decide whether **it** refers to the cat or the mouse,  
 while the continuation of the sentence refines that interpretation.  
+</details>
 
-
-### Right-to-left Languages  
+**Right-to-left Languages** 
 
 There are languages, such as Arabic, where text is written and read from right to left.  
 This does not prevent the implementation of attention: the model still processes the sequence in the **logical order** of symbols or sub-tokens as defined for that language.  
 
-# Attention: Intuition — Query, Key, and Value  
+## **Attention: Intuition — Query, Key, and Value Roles**  
 
 Let us introduce the idea that during processing, each token can play one of three roles:  
 
@@ -86,9 +87,8 @@ To represent these three roles, each token vector $x_i$ is projected into three 
 
 Here, $W^Q, W^K, W^V$ are trainable matrices.  
 
----
 
-### Measuring Similarity  
+**Measuring Similarity** 
 
 For each $x_i$, the representation is formed by comparing its query $q_i$ with the keys of previous tokens $k_j, j \leq i$.  
 Similarity can be measured by the **dot product**, which has the geometric interpretation of the cosine of the angle between two vectors scaled by their magnitudes:  
@@ -97,9 +97,8 @@ $$
 \langle a, b \rangle = |a||b|\cos(a, b)
 $$  
 
----
 
-### Output Representation  
+**Output Representation ** 
 
 Following this logic, the final representation $o_i$ of the token $x_i$ is a weighted combination of value vectors:  
 
@@ -113,7 +112,7 @@ where the weights $\alpha_{ij}$ depend on the similarity between query $q_i$ and
 ![attn_gig](https://ucarecdn.com/6c902bf8-5761-4e23-a3a9-2e303e17afef/)
 Awesome attention gif,  [src](https://medium.com/@incle/attention-mechanism-math-illustration-transformers-series-part-1-37c24ac9d2f2)
 
-# Attention: Formalization  
+## **Attention: Formalization** 
 
 We now formalize the idea from the previous step.  
 Initially, each token vector $x_i$ is projected into three components:  
@@ -126,9 +125,8 @@ Note that the dimensions of $q, k, v$ are not equal to the original embedding di
 For example, in the original Transformer paper, the embedding dimension was $d_{\text{model}} = 512$,  
 while the dimensions of $q, k, v$ were $d_k = d_v = 64$.  
 
----
 
-### Goal  
+**Goal:**
 
 For each token $x_i$, we want to form a representation $o_i$ that incorporates the weighted contributions of all previous tokens $x_j, j \leq i$.  
 Simplified, each representation $o_i$ should take the form:  
@@ -139,10 +137,6 @@ $$
 
 where the weights $\alpha_{ij}$ reflect the similarity between the current token $x_i$ and past tokens $x_j$.  
 
----
-
-### Requirements for the Weights  
-
 To construct this weighted sum, three steps are necessary:  
 
 1. **Compute similarity scores** for each previous vector.  
@@ -151,13 +145,11 @@ To construct this weighted sum, three steps are necessary:
 3. **Form the weighted representation** by combining the value vectors according to these normalized weights.  
 
 
-# Attention: Formalization  
+## **Attention: Formalization** 
 
 We now detail the formal computation of attention in several steps.  
 
----
-
-### Step 1. Computing Similarity Scores  
+**Step 1. Computing Similarity Scores** 
 
 For each previous token $x_j$, define its similarity to the current token $x_i$ as:  
 
@@ -175,7 +167,7 @@ Scaling keeps the distribution well-behaved and smooths the softmax output.
 ![dot_pr](https://ucarecdn.com/36d95c05-213e-4e99-bf38-64841fe5bb49/)
 *Dot-product values ​​for ebmeaddings from a standard normal distribution.*
 
-### Step 2. Normalizing Scores  
+**Step 2. Normalizing Scores** 
 
 All similarity scores are normalized to the interval $[0, 1]$ using the softmax transformation, yielding attention weights:  
 
@@ -191,7 +183,7 @@ It also removes issues from raw dot products where negative and positive values 
 ![softmax](https://ucarecdn.com/cb688160-7377-41ab-8f9d-e3e39791914a/)
 Softmax weights with and without embedding normalization by $\sqrt{d_{k}}$.
 
-### Step 3. Weighted Representation  
+**Step 3. Weighted Representation**  
 
 Once normalized weights are obtained, the weighted representation for token $x_i$ is:  
 
@@ -201,9 +193,8 @@ $$
 
 Here, $head_i$ represents the output of a **single attention head** (case $h=1$).  
 
----
 
-### Step 4. Projection Back into Embedding Space  
+**Step 4. Projection Back into Embedding Space ** 
 
 Finally, the representation is projected back into the model’s embedding space:  
 
@@ -223,7 +214,8 @@ This projection serves two purposes:
    - In the general case ($h > 1$), multiple heads are concatenated before being projected back with $W^O$.  
    - In this simplified case, $h = 1$.  
 
-   # Attention: Multi-Head Extension  
+
+## **Attention: Multi-Head Extension ** 
 
 Once attention is formalized for a single head, the transition to **multi-head attention** involves two modifications:  
 
@@ -233,9 +225,8 @@ Once attention is formalized for a single head, the transition to **multi-head a
 Using multi-head attention allows the model to capture different types of dependencies in each head,  
 and then aggregate them into a unified representation.  
 
----
 
-### Formalization  
+**Formalization** 
 
 Now, let each token vector $x_i$ be represented by three projections in each head $c$ out of $h$ heads:  
 
@@ -243,9 +234,7 @@ Now, let each token vector $x_i$ be represented by three projections in each hea
 - $k^c_i = x_i W^K_c$, dimension $[1, d_k]$  
 - $v^c_i = x_i W^V_c$, dimension $[1, d_v]$  
 
----
-
-### Step 1. Similarity Scores  
+**Step 1. Similarity Scores**  
 
 For each previous token $x_j$, define the similarity to the current token $x_i$ in head $c$ as:  
 
@@ -253,9 +242,7 @@ $$
 sim^c_{score}(x_i, x_j) = \frac{\langle q^c_i, k^c_j \rangle}{\sqrt{d_k}}
 $$  
 
----
-
-### Step 2. Normalization  
+**Step 2. Normalization ** 
 
 Normalize these scores using softmax to obtain attention weights per head:  
 
@@ -263,9 +250,7 @@ $$
 \alpha^c_{ij} = \text{softmax}(sim^c_{score}(x_i, x_j)), \quad \forall j \leq i
 $$  
 
----
-
-### Step 3. Weighted Representation  
+**Step 3. Weighted Representation** 
 
 With normalized weights, the weighted representation for token $x_i$ in head $c$ is:  
 
@@ -273,9 +258,7 @@ $$
 head^c_i = \sum_{j \leq i} \alpha^c_{ij} v^c_j
 $$  
 
----
-
-### Step 4. Projection Back into Embedding Space  
+**Step 4. Projection Back into Embedding Space** 
 
 The outputs of all heads are concatenated and projected back into the model’s embedding space:  
 
@@ -286,17 +269,16 @@ $$
 where the projection matrix $W^O \in \mathbb{R}^{h \cdot d_v \times d_{model}}$  
 is expanded to accommodate all $h$ heads simultaneously.  
 
----
-# Circuits in Attention  
+
+## **Circuits in Attention**  
 
 The attention mechanism described in previous steps can be decomposed into two distinct subcircuits:  
 
 - **QK-circuit (Query–Key circuit)** — decides *where to look*.  
 - **OV-circuit (Output–Value circuit)** — decides *what to copy and how to integrate*.  
 
----
 
-### QK-circuit (Query–Key)  
+### **QK-circuit (Query–Key)**  
 
 The QK-circuit is responsible for computing **attention logits (scores)**.  
 It consists of dot products between query and key vectors:  
@@ -307,9 +289,8 @@ $$
 
 This subcircuit determines how much the current token $x_i$ (via $q_i$) “aligns” with a past token $x_j$ (via $k_j$).  
 
----
 
-### OV-circuit (Output–Value)  
+### **OV-circuit (Output–Value)** 
 
 The OV-circuit is responsible for **transferring information** from past tokens into the current representation:  
 
@@ -320,9 +301,8 @@ $$
 where the weights $\alpha_{ij}$ are provided by the QK-circuit.  
 This subcircuit transforms the value vectors (contents of past tokens) into a useful representation and integrates them into the current state.  
 
----
 
-### Summary  
+**Summary** 
 
 - The **QK-circuit** defines the *structure* of the attention map.  
 - The **OV-circuit** defines the *flow of information*.  
@@ -330,7 +310,7 @@ This subcircuit transforms the value vectors (contents of past tokens) into a us
 These circuits are fundamental analytical tools in mechanistic interpretability,  
 and they frequently appear in research analyzing Transformer models.  
 
-# Transformer Block — LayerNorm and FFN  
+## **Transformer Block — LayerNorm and FFN**
 
 The computation of self-attention, described earlier, forms the foundation of the **Transformer block**.  
 In the literature, a Transformer block typically includes not only the self-attention layer but also three additional components:  
@@ -339,19 +319,13 @@ In the literature, a Transformer block typically includes not only the self-atte
 - **Residual connections** — providing shortcut pathways that preserve information through the residual stream,  
 - **Normalization layers** — most commonly **Layer Normalization (LayerNorm)**.  
 
----
-
 Next I will examine these components individually,  
 and then combine them to illustrate how they are integrated in the classical Transformer architecture.  
 
-## Feedforward Layer (FFN)  
+## **Feedforward Layer (FFN)** 
 
 The **Feedforward Layer (FFN)** is a two-layer fully connected neural network.  
 Its role is to transform each token representation in a **nonlinear way** and enrich it with new features.  
-
----
-
-### Architecture  
 
 The FFN is defined as:  
 
@@ -365,9 +339,7 @@ where:
 - $W_2 \in \mathbb{R}^{d_{ff} \times d}, \; b_2 \in \mathbb{R}^{d}$  
 - $\sigma(\cdot)$ is a nonlinear activation function (ReLU in the original Transformer).  
 
----
-
-### Key Properties  
+**Key FFN Properties**
 
 - **Shared weights across positions.**  
   The same matrices $W_1, W_2$ are applied independently to each token,  
@@ -381,15 +353,11 @@ where:
   In the original Transformer: $d = 512$, $d_{ff} = 2048$.  
   This expansion allows the model to project a token into a richer feature space and then compress it back to dimension $d$.  
 
-  ## Layer Normalization (LayerNorm)  
+## **Layer Normalization (LayerNorm)**
 
 **LayerNorm** is a step in the Transformer responsible for normalizing token embeddings.  
 Its purpose is to stabilize the distribution of activations, which simplifies training with gradient-based methods  
 by mitigating exploding or vanishing gradients.  
-
----
-
-### Definition  
 
 LayerNorm is a variant of **z-normalization** known from statistics.  
 The transformation is:  
@@ -403,11 +371,7 @@ where
 - $\mu = \frac{1}{d} \sum_{i=1}^d x_i$ — the mean over the $d$ dimensions of the token embedding,  
 - $\sigma = \sqrt{\frac{1}{d} \sum_{i=1}^d (x_i - \mu)^2}$ — the standard deviation.  
 
----
-
-### Difference from Standard z-Normalization  
-
-In the Transformer’s version, LayerNorm introduces **two learnable parameters**:  
+Difference from Standard z-Normalization is follows.  In the Transformer’s version, LayerNorm introduces **two learnable parameters**:  
 
 $$
 LayerNorm(x) = \gamma \cdot \frac{x - \mu}{\sigma} + \beta
@@ -419,7 +383,7 @@ $$
 These parameters preserve the **expressiveness** of embeddings after normalization,  
 ensuring that the process does not collapse all values into the same range.  
 
-## Residual Stream and Residual Connections  
+## **Residual Stream and Residual Connections**  
 
 The transformations inside a Transformer block can be expressed as a step-by-step sequence.  
 To introduce the concepts of **residual stream** and **residual connections**, consider the following.  
@@ -435,10 +399,6 @@ $$
 formed from the input embedding through the final layer output,  
 is called the **residual stream** of token $i$.  
 
----
-
-### Transformation Steps  
-
 Each representation is updated as follows:  
 
 1. $t_i^1 = LayerNorm(x_i)$  
@@ -449,8 +409,6 @@ Each representation is updated as follows:
 6. $h_i = t_i^5 + t_i^3$  
 
 ![transformer_block](https://ucarecdn.com/c9723058-68d7-417a-9bde-ad8baab6fd87/-/crop/1592x1074/125,0/-/preview/)
-
-### Residual Connection  
 
 Step 3 highlights a key operation:  
 
@@ -464,10 +422,6 @@ is called a **residual connection**.
 
 Residual connections ensure that the original signal $x_i$ is preserved,  
 while an additional correction term $t_i^2$ (the attention output) is added on top.  
-
----
-
-### Importance in Mechanistic Interpretability  
 
 Residual streams and residual connections describe the **flow of information** in a Transformer.  
 They are therefore fundamental objects of study in mechanistic interpretability research.  
