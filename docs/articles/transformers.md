@@ -13,12 +13,12 @@ Consequently, **transformer-based models**—including toy implementations—are
 In classical text processing models, a **word embedding** is static: each word is always mapped to the same vector, regardless of its context.  
 While effective in statistical models, this approach has a fundamental limitation: the same word can take on different meanings depending on context.  
 
-**Example: Homonymy**
+**Example: Homonymy:**
 
 - *“The wooden **lock** was hard to open.”*  
 - *“There was no one in the wooden **castle**.”*  
 
-**Example: Ambiguous Pronouns**
+**Example: Ambiguous Pronouns:**
 - *“The cat chased the mouse because **it** was hungry.”*  
 - *“The cat chased the mouse because **it** was small.”*  
 
@@ -145,7 +145,7 @@ To construct this weighted sum, three steps are necessary:
 3. **Form the weighted representation** by combining the value vectors according to these normalized weights.  
 
 
-## **Attention: Formalization** 
+## **Attention: Formalization 2** 
 
 We now detail the formal computation of attention in several steps.  
 
@@ -215,7 +215,7 @@ This projection serves two purposes:
    - In this simplified case, $h = 1$.  
 
 
-## **Attention: Multi-Head Extension ** 
+## **Attention: Multi-Head Extension** 
 
 Once attention is formalized for a single head, the transition to **multi-head attention** involves two modifications:  
 
@@ -242,7 +242,7 @@ $$
 sim^c_{score}(x_i, x_j) = \frac{\langle q^c_i, k^c_j \rangle}{\sqrt{d_k}}
 $$  
 
-**Step 2. Normalization ** 
+**Step 2. Normalization** 
 
 Normalize these scores using softmax to obtain attention weights per head:  
 
