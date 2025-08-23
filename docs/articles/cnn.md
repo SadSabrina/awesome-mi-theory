@@ -151,16 +151,19 @@ In their raw form, they were as follows:
 
 
 **Statement 1. Features**  
+
 **Features** are the fundamental units of neural networks.  
 They can be studied and understood as relatively autonomous objects.  
 In terms of linear algebra, they correspond to **directions in activation space**.  
 
 **Statement 2. Circuits** 
+
 Features are connected by weights, forming **circuits**.  
 These circuits can be studied as interactions between features,  
 from which more complex representations are built.  
 
 **Statement 3. Universality** 
+
 Analogous features and circuits emerge across different models and tasks.  
 That is, there exists a degree of **universality** in which features are learned and how they are combined.  
 
