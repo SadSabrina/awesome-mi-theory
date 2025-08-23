@@ -10,6 +10,7 @@ nav:
       - Basic Definitions: articles/basic-definiions.md
       - Key MI hypotheses : articles/hypotheses.md
       - Transformers : articles/transformers.md
+      - CNN: articles/cnn.md
 
 theme:
   name: material
