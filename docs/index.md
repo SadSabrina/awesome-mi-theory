@@ -4,7 +4,7 @@ Hi! I'm Sabrina, a researcher writing short articles on Mechanistic interpretabi
 
 ## About me
 
-- Position: Lecturer in mathematics / Explainable AI researcher
+- Position: Lecturer in XAI / XAI researcher 
 - Interests: Explainable AI, Mechanistic interpretability, AI Safety
 - Projects: 
     - [XAI-open_materials](https://github.com/SadSabrina/XAI-open_materials) —here, you will find practical guides to help you master key tools and approaches for applying XAI to large models. 
