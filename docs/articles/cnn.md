@@ -1,4 +1,4 @@
-# Convolutional Neural Networks (CNNs)  
+# **Convolutional Neural Networks (CNNs)** 
 
 **Convolutional Neural Networks (CNNs)** are an architecture with a rich history.  
 They were originally developed for image recognition tasks and, for a long time, represented the dominant paradigm in computer vision.  
@@ -73,11 +73,11 @@ where:
 
 Nonlinearities are necessary because:  
 
-- **Breaking linearity.**  
+- <strong>Breaking linearity.</strong>
   Convolution is a linear operation. A stack of purely convolutional layers, no matter how deep,  
   remains a linear model. Nonlinearities (e.g., ReLU, sigmoid) make the network expressive.  
 
-- **Improving stability and feature quality.**  
+- <strong>Improving stability and feature quality.</strong> 
   Nonlinear functions help prevent exploding activations, improve gradient descent convergence,  
   and suppress insignificant values. This allows the network to distinguish meaningful patterns from noise.  
 </details>
@@ -93,12 +93,12 @@ Nonlinearities are necessary because:
 
 An operator \(W\) is **linear** if it satisfies:  
 
-1. **Additivity (preserves sums):**  
+1. <strong>Additivity (preserves sums):</strong>
    $$
    W(x_1 + x_2) = W(x_1) + W(x_2)
    $$  
 
-2. **Homogeneity (preserves scalar multiplication):**  
+2. <strong>Homogeneity (preserves scalar multiplication):</strong>
    $$
    W(\alpha x) = \alpha W(x), \quad \forall \alpha \in \mathbb{R}
    $$  
