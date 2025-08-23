@@ -21,3 +21,4 @@ Hi! I'm Sabrina, a researcher writing short articles on Mechanistic interpretabi
 - [Basic Definitions](articles/basic-definiions.md)
 - [Key MI hypotheses](articles/hypotheses.md)
 - [Transformers](articles/transformers.md)
+- [CNN](articles/cnn.md)
